@@ -49,7 +49,7 @@ public class AddressBook {
 		aBook.addBuddy(buddy);
 		aBook.addBuddy(buddy2);
 		aBook.addBuddy(buddy3);
-		aBook.removeBuddy(6);
+		aBook.removeBuddy(1);
 		
 		
 		
