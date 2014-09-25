@@ -49,4 +49,10 @@ public class BuddyInfo {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	
+	//adding method in the branch
+	public void printHi()
+	{
+		System.out.println("hi im new branch in BuddyInfo");
+	}
 }

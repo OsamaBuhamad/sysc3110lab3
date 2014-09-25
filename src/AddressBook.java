@@ -33,6 +33,11 @@ public class AddressBook {
 		buddyList.remove(index);
 	}
 	
+	//adding method in the branch 
+	public void printHello()
+	{
+		System.out.println("hello im new branch in AddressBook");
+	}
 
 	
 	
