@@ -22,7 +22,7 @@ public class BuddyInfo {
 		System.out.println("Hello World!");
 		System.out.println("my friend is " + person.getName() + " his number is "+person.getNumber()+ " and his address is "+ person.getAddress() );
 		
-		System.out.println("I added this message from GITHUB!!!");
+		System.out.println("I added this message from GITHUB!!!!");
 
 	}
 
