@@ -45,10 +45,17 @@ public class AddressBook {
 		BuddyInfo buddy2 = new BuddyInfo("Spider", "Volcano city", 87869);
 		BuddyInfo buddy3 = new BuddyInfo("Ant", "Volcano city", 87869);
 		
+		BuddyInfo buddy4 = new BuddyInfo("Cake", "Nowhere city", 89007);
+		BuddyInfo buddy5 = new BuddyInfo("Bopa", "Loco city", 789345);
+		
 		AddressBook aBook = new AddressBook();
 		aBook.addBuddy(buddy);
 		aBook.addBuddy(buddy2);
 		aBook.addBuddy(buddy3);
+		
+		aBook.addBuddy(buddy4);
+		aBook.addBuddy(buddy5);
+		
 		aBook.removeBuddy(1);
 		
 		
