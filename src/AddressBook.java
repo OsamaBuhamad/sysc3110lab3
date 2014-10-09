@@ -1,16 +1,73 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.*; 
 
-public class AddressBook {
+
+
+public class AddressBook extends JFrame implements ActionListener {
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<BuddyInfo> buddyList = new ArrayList<BuddyInfo>();
+	 private static JButton temp;
+	 private static JMenuBar menuBar;
 	
 	/**
 	 * constructor
 	 */
 	public AddressBook()
 	{
-		
+		JFrame f =  new JFrame("Address book frame");
+	      f.setSize(500, 500);
+	      f.setLayout(new BorderLayout());
+	      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      
+	     
+	      temp = new JButton("Hello!");
+	      temp.setBackground(Color.white);
+	       temp.addActionListener(this);
+	        f.getContentPane().add(temp, BorderLayout.SOUTH);
+	    
+
+	      
+	      JMenuBar menuBar = new JMenuBar( );
+	      f.setJMenuBar(menuBar);
+
+	      JMenu createMenu = new JMenu( "Create" );
+	      menuBar.add( createMenu );
+	      JMenu saveMenu = new JMenu( "Save" );
+	      menuBar.add( saveMenu );
+	      JMenu displayMenu = new JMenu( "Display" );
+	      menuBar.add( displayMenu );
+	      
+	      
+	      JMenuItem item;
+	 	 
+	      item = new JMenuItem ( "Create an Address Book?" );
+	      item.addActionListener( this );
+	      createMenu.add( item );
+	      item = new JMenuItem ( "Create a Buddy?" );
+	      item.addActionListener( this );
+	  	  createMenu.add( item );   
+	  	  
+	  	item = new JMenuItem ( "Save the Address Book" );
+	      item.addActionListener( this );
+	      saveMenu.add( item );
+	      
+	      item = new JMenuItem ( "Display the Address Book" );
+	      item.addActionListener( this );
+	  	  displayMenu.add( item ); 
+	  	  
+	  	  
+			f.setVisible(true);
 	}
 	
 	/**
@@ -44,8 +101,8 @@ public class AddressBook {
 
 	public static void main(String[] args)
 	{
-		System.out.println("this is AddressBook class");
 		
+
 		BuddyInfo buddy = new BuddyInfo("Hulk", "Volcano city", 87869);
 		BuddyInfo buddy2 = new BuddyInfo("Spider", "Volcano city", 87869);
 		BuddyInfo buddy3 = new BuddyInfo("Ant", "Volcano city", 87869);
@@ -63,8 +120,77 @@ public class AddressBook {
 		
 		aBook.removeBuddy(1);
 		
+
+		  
+
+		      
+		     // f.getContentPane().add(menuBar);
+		      //menuBar.setVisible(true);
+		      
+		    //  JTextField tf = new JTextField(20);         
+		     // tf.setBackground(Color.red);
+
+		      // Don't allow the user to type in the
+		      // text field
+		     // tf.setEditable(false);
+		    //  tf.setSize(50, 50);
+		    //  f.add(tf);
+
+	
+
+		System.out.println("this is AddressBook class");
 		
 		
+		
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Create an Address Book?".equals(e.getActionCommand()))
+		{
+			AddressBook aNewBook = new AddressBook();
+			//AddressBookPanel p= new AddressBookPanel();
+			String inputValue = JOptionPane.showInputDialog("Please Enter the Address Book Name");
+			
+				System.out.println("the input is "+inputValue+" YOU SHOULD CREATE A BOOK");
+				
+		}else if ("Create a Buddy?".equals(e.getActionCommand()))
+		{
+			
+			JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+			
+			
+			String inputValue = JOptionPane.showInputDialog("Please Enter the Buddy Name");
+			String inputValue2 = JOptionPane.showInputDialog("Please Enter the Address ");
+			String inputValue3 = JOptionPane.showInputDialog("Please Enter the number");
+			int foo = Integer.parseInt(inputValue3);
+			BuddyInfo b= new BuddyInfo(inputValue,inputValue2,foo);	
+			//AddressBook aNewBook = new AddressBook();
+			//aNewBook.addBuddy(inputValue);
+			buddyList.add(b);
+			System.out.println("YOU SHOULD CREATE A BUDDY");
+			
+		}else if ("Save the Address Book".equals(e.getActionCommand())){
+			
+			System.out.println("YOU SAVE THE BOOK");
+			
+		} else if ("Display the Address Book".equals(e.getActionCommand())){
+			
+			System.out.println("DISPLAY THE BOOK");
+		}
+      
+		temp.setText("GOT IT");
 		
 	}
+	
+	public String toString()
+	{
+		
+		
+		return null;
+	}
 }
+
+

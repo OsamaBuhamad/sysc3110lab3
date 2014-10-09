@@ -18,11 +18,11 @@ public class BuddyInfo {
 
 		BuddyInfo person= new BuddyInfo("Homer", "Ottawa", 911);
 	
-		
-		System.out.println("Hello World!");
-		System.out.println("my friend is " + person.getName() + " his number is "+person.getNumber()+ " and his address is "+ person.getAddress() );
-		
-		System.out.println("I added this message from GITHUB!!!!");
+		System.out.println(person.toString());
+//		System.out.println("Hello World!");
+//		System.out.println("my friend is " + person.getName() + " his number is "+person.getNumber()+ " and his address is "+ person.getAddress() );
+//		
+//		System.out.println("I added this message from GITHUB!!!!");
 
 	}
 
@@ -50,9 +50,17 @@ public class BuddyInfo {
 		this.number = number;
 	}
 	
-	//adding method in the branch
-	public void printHi()
+	
+	public boolean equals(BuddyInfo b)
 	{
-		System.out.println("hi im new branch in BuddyInfo");
+		if(this.equals(b))
+			return true;
+		else 
+			return false;
+	}
+	
+	public String toString(){
+		
+		return ("name: "+this.getName()+ "| address: "+ this.getAddress()+"  |phone number: "+this.getNumber());	
 	}
 }
