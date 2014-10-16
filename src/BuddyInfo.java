@@ -61,6 +61,6 @@ public class BuddyInfo {
 	
 	public String toString(){
 		
-		return ("name: "+this.getName()+ "| address: "+ this.getAddress()+"  |phone number: "+this.getNumber());	
+		return ("name: "+this.getName()+ "| address: "+ this.getAddress()+"  |phone number: "+this.getNumber()+" \n");	
 	}
 }

@@ -2,6 +2,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*; 
@@ -154,12 +157,13 @@ public class AddressBook extends JFrame implements ActionListener {
 			//AddressBookPanel p= new AddressBookPanel();
 			String inputValue = JOptionPane.showInputDialog("Please Enter the Address Book Name");
 			
-				System.out.println("the input is "+inputValue+" YOU SHOULD CREATE A BOOK");
+				System.out.println("the input is "+inputValue);
+				temp.setText("Adderss book created");
 				
 		}else if ("Create a Buddy?".equals(e.getActionCommand()))
 		{
 			
-			JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
 			
 			
 			String inputValue = JOptionPane.showInputDialog("Please Enter the Buddy Name");
@@ -170,27 +174,58 @@ public class AddressBook extends JFrame implements ActionListener {
 			//AddressBook aNewBook = new AddressBook();
 			//aNewBook.addBuddy(inputValue);
 			buddyList.add(b);
-			System.out.println("YOU SHOULD CREATE A BUDDY");
+			System.out.println("a buddy was added to the book! his/her info: "+inputValue+", "+inputValue2+", "+inputValue3);
+			System.out.println("the size of the book is :"+buddyList.size());
+			temp.setText("buddy was added");
 			
 		}else if ("Save the Address Book".equals(e.getActionCommand())){
 			
-			System.out.println("YOU SAVE THE BOOK");
+			//System.out.println("it is "+ buddyList.get(5).getName());
+			
+			BufferedWriter out = null;
+			try {
+				out = new BufferedWriter(new FileWriter("myFile.txt"));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			for(int i=0;i<=(buddyList.size() -1);i++)
+			{
+				String s = buddyList.get(i).getName()+"  "+
+						   buddyList.get(i).getAddress()+
+						   "  "+buddyList.get(i).getNumber()+"\n"; 
+				try {
+					out.write(s);
+					out.newLine();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}//end of for 
+			
+			try {
+				out.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+						
+			temp.setText("Address book was outputted to a file ");
 			
 		} else if ("Display the Address Book".equals(e.getActionCommand())){
 			
 			System.out.println("DISPLAY THE BOOK");
+			System.out.println(buddyList.toString());
+			
 		}
       
-		temp.setText("GOT IT");
+		//temp.setText("GOT IT");
 		
 	}
 	
-	public String toString()
-	{
-		
-		
-		return null;
-	}
+
+	
+	
 }
 
 
