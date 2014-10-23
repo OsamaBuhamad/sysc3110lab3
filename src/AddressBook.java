@@ -1,27 +1,19 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.*; 
 
 
 
-public class AddressBook extends JFrame {
+public class AddressBook  {
 	
 	
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private ArrayList<BuddyInfo> buddyList = new ArrayList<BuddyInfo>();
+
+	private ArrayList<BuddyInfo> buddyList;
+	
+	/* NOT USED FOR NOW
 	private static JList<BuddyInfo> buddyList1;
 	DefaultListModel<BuddyInfo> listModel;
 	 private static JButton temp;
@@ -29,12 +21,13 @@ public class AddressBook extends JFrame {
 	 private JFrame f; 
 	 private static JPanel controlPanel;
 	 private JLabel statusLabel;
-	
+	*/
 	/**
 	 * constructor
 	 */
 	public AddressBook()
 	{
+		buddyList= new ArrayList<BuddyInfo>();
 		
 //		listModel = new DefaultListModel<>();
 //		BuddyInfo buddy = new BuddyInfo("Hulk", "Volcano city", 87869);
@@ -49,24 +42,42 @@ public class AddressBook extends JFrame {
 //        buddyList1 = new JList<>(listModel);
 //       
 //        buddyList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		/**
+		 * *** this is from previous lab should be corrected 
+		 * DefaultListModel<BuddyInfo> listModel = new DefaultListModel<>();
+			BuddyInfo buddy = new BuddyInfo("Hulk", "Volcano city", 87869);
+			BuddyInfo buddy2 = new BuddyInfo("Spider", "Ottawa city", 33459);
+			BuddyInfo buddy3 = new BuddyInfo("Ant", "TO city", 11869);
+			listModel.addElement(buddy);
+			listModel.addElement(buddy2);
+			listModel.addElement(buddy3);
 		
-		DefaultListModel<BuddyInfo> listModel = new DefaultListModel<>();
-		BuddyInfo buddy = new BuddyInfo("Hulk", "Volcano city", 87869);
-		BuddyInfo buddy2 = new BuddyInfo("Spider", "Ottawa city", 33459);
-		BuddyInfo buddy3 = new BuddyInfo("Ant", "TO city", 11869);
-		listModel.addElement(buddy);
-		listModel.addElement(buddy2);
-		listModel.addElement(buddy3);
+			buddyList1 = new JList<>(listModel);
 		
-		buddyList1 = new JList<>(listModel);
+			AddressBookGUI window = new AddressBookGUI(); 
+			window.add(buddyList1, BorderLayout.CENTER);
+			AddressBookController c = new AddressBookController(window); 
+			window.setV(); 
+		 */
 		
-		AddressBookGUI window = new AddressBookGUI(); 
-		window.add(buddyList1, BorderLayout.CENTER);
-		AddressBookController c = new AddressBookController(window); 
-		window.setV(); 
 		 
 	}
 	
+	/**
+	 * this method return the size of the list 
+	 * @return
+	 */
+	 public int size() {
+		 return buddyList.size();
+		 }
+	 
+	 /**
+	  * contains method
+	  */
+	 public boolean contains(BuddyInfo b)
+	 {
+		 return (buddyList.contains(b)); 
+	 }
 	/**
 	 * this method will add an instance of buddy to the buddyList arrayList
 	 * @param b
@@ -121,13 +132,6 @@ public class AddressBook extends JFrame {
 		*/
 		
 		
-		
-		SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AddressBook();
-            }
-        });
 		System.out.println("this is AddressBook class");
 		
 		
