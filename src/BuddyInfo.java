@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 
 public class BuddyInfo {
 	
@@ -13,17 +15,43 @@ public class BuddyInfo {
 	}
 	
 	
+	public BuddyInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public static void main(String[] args)
 	{
 
 		BuddyInfo person= new BuddyInfo("Homer", "Ottawa", 911);
 	
 		System.out.println(person.toString());
+		
+		BuddyInfo person2= new BuddyInfo();
+		person2=BuddyInfo.imporT("homer$ottawa$112");
+		
+		System.out.println(person2.toString());
 //		System.out.println("Hello World!");
 //		System.out.println("my friend is " + person.getName() + " his number is "+person.getNumber()+ " and his address is "+ person.getAddress() );
 //		
 //		System.out.println("I added this message from GITHUB!!!!");
 
+	}//end of main
+	
+	/**
+	 * import method from lab 7
+	 * @return
+	 */
+	public static BuddyInfo imporT(String s)
+	{
+		BuddyInfo b=new BuddyInfo();
+		 Scanner in = new Scanner(s).useDelimiter("\\$");
+		 b.setName(in.next());
+		 b.setAddress(in.next());
+		 b.setNumber(in.nextInt());
+	     in.close(); 
+	    
+		return b;
 	}
 
 	public String getName() {
@@ -61,6 +89,6 @@ public class BuddyInfo {
 	
 	public String toString(){
 		
-		return ("name: "+this.getName()+ "| address: "+ this.getAddress()+"  |phone number: "+this.getNumber()+" \n\n");	
+		return (""+this.getName()+ "$"+ this.getAddress()+"$"+this.getNumber());	
 	}
 }

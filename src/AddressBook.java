@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -103,7 +106,48 @@ public class AddressBook  {
 	{
 		System.out.println("hello im new branch in AddressBook");
 	}
+	
+	/**
+	 * export method 
+	 * @param args
+	 */
 
+	public void export ()
+	{
+		for(BuddyInfo b: buddyList )
+		{
+			System.out.println(b.toString());
+		}
+		
+		BufferedWriter out = null;
+		try {
+			out = new BufferedWriter(new FileWriter("myFile.txt"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for(int i=0;i<=(buddyList.size() -1);i++)
+		{
+//			String s = buddyList.get(i).getName()+"  "+
+//					buddyList.get(i).getAddress()+
+//					   "  "+buddyList.get(i).getNumber()+"\n"; 
+		String s=buddyList.get(i).toString();
+			try {
+				out.write(s);
+				out.newLine();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}//end of for 
+		
+		try {
+			out.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 	
 	
 
@@ -112,7 +156,7 @@ public class AddressBook  {
 		
 
 		
-		/*
+		
 		BuddyInfo buddy = new BuddyInfo("Hulk", "Volcano city", 87869);
 		BuddyInfo buddy2 = new BuddyInfo("Spider", "Ottawa city", 33459);
 		BuddyInfo buddy3 = new BuddyInfo("Ant", "TO city", 11869);
@@ -129,11 +173,10 @@ public class AddressBook  {
 		aBook.addBuddy(buddy5);
 		
 		aBook.removeBuddy(1);
-		*/
 		
 		
 		System.out.println("this is AddressBook class");
-		
+		aBook.export();
 		
 		
 
